@@ -4,15 +4,15 @@
 
 DWORD getParentProcessID() {
 	HANDLE snapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-	PROCESSENTRY32 process = { 0 };
+	PROCESSENTRY32W process = { 0 };
 	process.dwSize = sizeof(process);
 
-	if (Process32First(snapshot, &process)) {
+	if (Process32FirstW(snapshot, &process)) {
 		do {
             		//If you want to another process as parent change here
 			if (!wcscmp(process.szExeFile, L"explorer.exe"))
 				break;
-		} while (Process32Next(snapshot, &process));
+		} while (Process32NextW(snapshot, &process));
 	}
 
 	CloseHandle(snapshot);
